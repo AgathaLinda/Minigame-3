@@ -1,0 +1,241 @@
+
+ 
+<HEAD>
+ 
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript"><!--
+ 
+/* inisialisasi judul novel */
+ 
+ var judul = new Array(50);
+ 
+/* initializing the array */
+ 
+   judul[0] = "THE REUNION";
+   judul[1] = "THE SHACK";
+   judul[2] = "OLIVE KITTERRIDGE";
+   judul[3] = "APHRODITE";
+   judul[4] = "TUKARAN PACAR";
+   judul[5] = "RODA DEA";
+   judul[6] = "MISS KAMPOENK";
+   judul[7] = "SPRING";
+   judul[8] = "SMS TERAKHIR";
+   judul[9] = "SEMESTER TERAKHIR";
+  judul[10] = "HATI KEDUA";
+  judul[11] = "MATA KEDUA";
+  judul[12] = "BULAN MEMERAH";
+  judul[13] = "LOVE AND HEART";
+  judul[14] = "PLAYBOY DODOL";
+  judul[15] = "GALANIZA";
+  judul[16] = "CRAZYMOLAZY";
+  judul[17] = "SCHOOLIZER";
+  judul[18] = "ACCIDENTALLY LOVE";
+  judul[19] = "SENJA KACA";
+  judul[20] = "BUBBLE LOVE";
+  judul[21] = "SPLASH";
+  judul[22] = "BROTHER";
+  judul[23] = "CUNDAMANIK";
+  judul[24] = "ABSOLUTELY HIM";
+  judul[25] = "CLOUDY";
+  judul[26] = "SELAMANYA CINTA";
+  judul[27] = "BOULEVARD";
+  judul[28] = "RATUKU BAWEL";
+  judul[29] = "FOUND LOVE";
+    
+/* random antara 0 sampai 29 */
+ 
+ var random = Math.floor(Math.random() * 30);
+ 
+/* menyimpan judul yang akan ditebak */
+ 
+ var temp = judul[random];
+ 
+/* inisialisasi var coba. Untuk kesempatan pemain mencoba */
+ 
+ var coba = 0;
+ 
+/* fungsi main */
+ 
+ function guessit()
+ {
+ 
+   var guess = document.form1.guess1.value;
+ 
+   coba++;
+ 
+   window.status = "Kesempatan : " + coba ;
+ 
+   switch(coba)
+   {
+ 
+     case 1:
+     document.form1.hint.value = "Bantuan pertama : Judul novel ini diawali dengan huruf " + temp.charAt(0);
+     break;
+ 
+     case 2:
+     document.form1.hint.value = "Bantuan kedua : Judul novel ini diakhiri dengan huruf " + temp.charAt(temp.length - 1);
+     break;
+ 
+     case 3:
+     document.form1.hint.value = "Bantuan terakir : Judul novel ini terdiri dari " + temp.length + " karakter";
+     break;
+ 
+     default:
+     document.form1.hint.value = "Tidak ada bantuan lagi :( ";
+ 
+   }
+ 
+   if(guess.toUpperCase() == temp)  /* Jika yang ditebak oleh pemain sama dengan soal */
+   {
+ 
+     if(window.confirm("Yak anda benar! :D Judul novel ini adalah " + temp + "\nMau main lagi?"))
+      window.location.reload();     /* reloads page untuk mengulang */
+ 
+   }
+ 
+   else
+   {
+ 
+     if(coba == 4) /* Gak bisa nebak..*/
+     {
+ 
+    if(window.confirm("Maaf... Kesempatan kamu udah abis. Nama judulnya adalah " + temp + "\nYuk mainin lagi :D"))
+      {
+        window.location.reload(); /* reloads page untuk mengulang */
+   
+        document.form1.hint.value = "Tuliskan judul novel tebakanmu di sini lalu tekan tombol Tebak ";
+   
+      }
+ 
+     }
+ 
+   }
+ 
+ }
+ 
+/* akir dari guessit() function! */
+ 
+//--></SCRIPT>
+ 
+<SCRIPT LANGUAGE="JavaScript" TYPE="text/javascript"><!--
+ 
+ function catchKeyCode() //dipanggil waktu user menekan tombol return 
+ {
+ 
+   if(event.keyCode == 13)
+    guessit();
+ 
+ }
+ 
+ function stat() // Status kesempatan user
+ {
+ 
+   window.status = "Kesempatan : " + tries ;
+ 
+ }
+ 
+ function clearBox() //Membersihkan form
+ {
+ 
+   document.form1.guess1.value = "";
+ 
+ }
+ 
+ function newGame()
+ {
+ 
+   if(window.confirm("Apakah kamu ingin memulai game lagi? "))
+   {
+ 
+     window.location.reload();  /* reloads page buat new game */
+ 
+     document.form1.hint.value = "Tuliskan judul novel tebakanmu di sini lalu tekan tombol Tebak!";
+ 
+   }
+ 
+ }
+ 
+//--></SCRIPT>
+ 
+<STYLE TYPE="text/css"><!--
+ 
+.tab { border: solid 1 #000000; }
+ 
+.td1 { 
+  font-family: Helvetica, sans-serif, Verdana, Arial; 
+  font-size: 13; 
+  font-weight: bold; 
+  background-color: #2F74D0; 
+  color: #FFFFFF; 
+  border: 0; }
+ 
+.txt1 { 
+  font-family: Helvetica, sans-serif, Verdana, Arial; 
+  font-size: 13; 
+  font-weight: bold; 
+  background-color: #2F74D0; 
+  color: #FFFFFF; 
+  border: 0; }
+ 
+.txt2 { 
+  font-family: Helvetica, sans-serif, Verdana, Arial; 
+  font-size: 12; 
+  font-weight: normal; 
+  border: thin groove 1 #000000; 
+  border: solid 1 #000000; }
+ 
+.btn { 
+  font-family: Helvetica, sans-serif, Verdana, Arial; 
+  font-size: 12; 
+  background-color: #5FFEF7; 
+  color: black; 
+  border: solid 1 #FFFFFF; 
+  cursor: hand; }
+  
+ #contain{
+  ALIGN: center;
+  margin-top:100px;
+  margin-left:300px;
+
+ }//--></STYLE>
+ 
+</HEAD>
+ 
+
+ 
+    <BODY onLoad=stat() onKeyPress=catchKeyCode()>
+
+    <img src="head.jpg"  width="100%" height="250">
+    <div id="contain">
+      <FORM NAME=form1>
+        <TABLE CLASS=tab BORDER=0 BGCOLOR=#FF9900 CELLPADDING=4 CELLSPACING=0>
+          <TR>
+            <TD CLASS=td1>
+            <INPUT TYPE=text SIZE=59 NAME=hint VALUE="Tuliskan judul novel tebakanmu di sini, lalu tekan tombol Tebak!" READONLY CLASS=txt1>
+            </TD>
+          </TR>
+
+          <TR>
+            <TD CLASS=td1>
+            <INPUT TYPE=text NAME=guess1 SIZE=59 CLASS=txt2 TITLE="tebakan user">
+            </TD>
+          </TR>
+
+          <TR>
+            <TD Class=td1 ALIGN=center>
+             
+            <INPUT TYPE=button VALUE=Tebak! onClick=guessit() CLASS=btn TITLE="hint & guess">
+             
+            <INPUT TYPE=button VALUE=Bersihkan onClick=clearBox() CLASS=btn TITLE="clear teks ">
+             
+            <INPUT TYPE=button VALUE=Mulai onClick=newGame() CLASS=btn TITLE="new game">
+             
+            </TD>
+          </TR>
+        </TABLE>
+      </FORM>
+    </div>
+
+
+
+
+ 
